@@ -10,12 +10,15 @@ import (
 	"github.com/drone/drone-runtime/engine"
 	"github.com/drone/drone-runtime/engine/docker/auth"
 
-	"k8s.io/api/core/v1"
+	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/client-go/informers"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/kubernetes/scheme"
+
+	// this is
+	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/client-go/tools/clientcmd"
 )
@@ -99,17 +102,17 @@ func (e *kubeEngine) Setup(ctx context.Context, spec *engine.Spec) error {
 		}
 	}
 
-	// pv := toPersistentVolume(e.node, spec.Metadata.Namespace, spec.Metadata.Namespace, filepath.Join("/tmp", spec.Metadata.Namespace))
-	// _, err = e.client.CoreV1().PersistentVolumes().Create(pv)
-	// if err != nil {
-	// 	return err
-	// }
+	pv := toPersistentVolume(e.node, spec.Metadata.Namespace, spec.Metadata.Namespace, filepath.Join("/drone/src", spec.Metadata.Namespace))
+	_, err = e.client.CoreV1().PersistentVolumes().Create(pv)
+	if err != nil {
+		return err
+	}
 
-	// pvc := toPersistentVolumeClaim(spec.Metadata.Namespace, spec.Metadata.Namespace)
-	// _, err = e.client.CoreV1().PersistentVolumeClaims(spec.Metadata.Namespace).Create(pvc)
-	// if err != nil {
-	// 	return err
-	// }
+	pvc := toPersistentVolumeClaim(spec.Metadata.Namespace, spec.Metadata.Namespace)
+	_, err = e.client.CoreV1().PersistentVolumeClaims(spec.Metadata.Namespace).Create(pvc)
+	if err != nil {
+		return err
+	}
 
 	return nil
 }

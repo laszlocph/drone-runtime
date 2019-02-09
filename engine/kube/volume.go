@@ -1,12 +1,12 @@
 package kube
 
 import (
-	"k8s.io/api/core/v1"
+	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-var defaultVolumeSize = resource.MustParse("5Gi")
+var defaultVolumeSize = resource.MustParse("100Mi")
 
 func toPersistentVolume(node, namespace, name, path string) *v1.PersistentVolume {
 	return &v1.PersistentVolume{
@@ -20,21 +20,10 @@ func toPersistentVolume(node, namespace, name, path string) *v1.PersistentVolume
 			},
 			AccessModes:                   []v1.PersistentVolumeAccessMode{v1.ReadWriteMany},
 			PersistentVolumeReclaimPolicy: v1.PersistentVolumeReclaimRetain,
-			StorageClassName:              "local-storage",
 			PersistentVolumeSource: v1.PersistentVolumeSource{
-				Local: &v1.LocalVolumeSource{
-					Path: path,
-				},
-			},
-			NodeAffinity: &v1.VolumeNodeAffinity{
-				Required: &v1.NodeSelector{
-					NodeSelectorTerms: []v1.NodeSelectorTerm{{
-						MatchExpressions: []v1.NodeSelectorRequirement{{
-							Key:      "kubernetes.io/hostname",
-							Operator: v1.NodeSelectorOpIn,
-							Values:   []string{node},
-						}},
-					}},
+				NFS: &v1.NFSVolumeSource{
+					Server: "nfs-server",
+					Path:   path,
 				},
 			},
 		},
@@ -42,7 +31,7 @@ func toPersistentVolume(node, namespace, name, path string) *v1.PersistentVolume
 }
 
 func toPersistentVolumeClaim(namespace, name string) *v1.PersistentVolumeClaim {
-	localStorageClass := "local-storage"
+	storageClass := ""
 
 	return &v1.PersistentVolumeClaim{
 		ObjectMeta: metav1.ObjectMeta{
@@ -51,7 +40,7 @@ func toPersistentVolumeClaim(namespace, name string) *v1.PersistentVolumeClaim {
 		},
 		Spec: v1.PersistentVolumeClaimSpec{
 			AccessModes:      []v1.PersistentVolumeAccessMode{v1.ReadWriteMany},
-			StorageClassName: &localStorageClass,
+			StorageClassName: &storageClass,
 			Resources: v1.ResourceRequirements{
 				Requests: v1.ResourceList{
 					v1.ResourceStorage: defaultVolumeSize,

@@ -1,0 +1,137 @@
+{
+  "metadata": {
+    "uid": "vypmf4odm3onnkedbjavobwv4zuxhywi",
+    "namespace": "vypmf4odm3onnkedbjavobwv4zuxhywi",
+    "name": "vypmf4odm3onnkedbjavobwv4zuxhywi",
+    "labels": {
+      "io.drone.pipeline.kind": "pipeline",
+      "io.drone.pipeline.name": "default",
+      "io.drone.pipeline.type": ""
+    }
+  },
+  "platform": {},
+  "steps": [
+    {
+      "metadata": {
+        "uid": "ykaazcccgjqmooammn4y09bt8rnfrgai",
+        "namespace": "vypmf4odm3onnkedbjavobwv4zuxhywi",
+        "name": "step-1",
+        "labels": {
+          "io.drone.step.name": "step-1"
+        }
+      },
+      "environment": {
+        "CI_WORKSPACE": "/drone/src",
+        "CI_WORKSPACE_BASE": "/drone/src",
+        "CI_WORKSPACE_PATH": "",
+        "DRONE_BUILD_EVENT": "",
+        "DRONE_COMMIT_BRANCH": "",
+        "DRONE_COMMIT_REF": "",
+        "DRONE_COMMIT_SHA": "",
+        "DRONE_REMOTE_URL": "",
+        "DRONE_WORKSPACE": "/drone/src",
+        "DRONE_WORKSPACE_BASE": "/drone/src",
+        "DRONE_WORKSPACE_PATH": ""
+      },
+      "files": [
+        {
+          "name": "step-1",
+          "path": "/usr/drone/bin/init",
+          "mode": 511
+        }
+      ],
+      "volumes": [
+        {
+          "name": "workspace",
+          "path": "/drone/src"
+        }
+      ],
+      "working_dir": "/drone/src",
+      "docker": {
+        "args": [
+          "/usr/drone/bin/init"
+        ],
+        "command": [
+          "/bin/sh"
+        ],
+        "image": "docker.io/library/alpine:latest"
+      }
+    },
+    {
+      "metadata": {
+        "uid": "ozcw68vpcdu95hmzlbwx3q8t739j42ge",
+        "namespace": "vypmf4odm3onnkedbjavobwv4zuxhywi",
+        "name": "step-2",
+        "labels": {
+          "io.drone.step.name": "step-2"
+        }
+      },
+      "environment": {
+        "CI_WORKSPACE": "/drone/src",
+        "CI_WORKSPACE_BASE": "/drone/src",
+        "CI_WORKSPACE_PATH": "",
+        "DRONE_BUILD_EVENT": "",
+        "DRONE_COMMIT_BRANCH": "",
+        "DRONE_COMMIT_REF": "",
+        "DRONE_COMMIT_SHA": "",
+        "DRONE_REMOTE_URL": "",
+        "DRONE_WORKSPACE": "/drone/src",
+        "DRONE_WORKSPACE_BASE": "/drone/src",
+        "DRONE_WORKSPACE_PATH": ""
+      },
+      "files": [
+        {
+          "name": "step-2",
+          "path": "/usr/drone/bin/init",
+          "mode": 511
+        }
+      ],
+      "volumes": [
+        {
+          "name": "workspace",
+          "path": "/drone/src"
+        }
+      ],
+      "working_dir": "/drone/src",
+      "docker": {
+        "args": [
+          "/usr/drone/bin/init"
+        ],
+        "command": [
+          "/bin/sh"
+        ],
+        "image": "docker.io/library/alpine:latest"
+      }
+    }
+  ],
+  "files": [
+    {
+      "metadata": {
+        "uid": "l5nigt8bur4myv4oc6fd1bk8homowqwn",
+        "namespace": "vypmf4odm3onnkedbjavobwv4zuxhywi",
+        "name": "step-1"
+      },
+      "data": "CmlmIFsgLW4gIiRDSV9ORVRSQ19NQUNISU5FIiBdOyB0aGVuCmNhdCA8PEVPRiA+ICRIT01FLy5uZXRyYwptYWNoaW5lICRDSV9ORVRSQ19NQUNISU5FCmxvZ2luICRDSV9ORVRSQ19VU0VSTkFNRQpwYXNzd29yZCAkQ0lfTkVUUkNfUEFTU1dPUkQKRU9GCmNobW9kIDA2MDAgJEhPTUUvLm5ldHJjCmZpCnVuc2V0IENJX05FVFJDX1VTRVJOQU1FCnVuc2V0IENJX05FVFJDX1BBU1NXT1JECnVuc2V0IERST05FX05FVFJDX1VTRVJOQU1FCnVuc2V0IERST05FX05FVFJDX1BBU1NXT1JECnNldCAtZQoKZWNobyArICJkYXRlID4gL2Ryb25lL3NyYy90ZXN0LnR4dCIKZGF0ZSA+IC9kcm9uZS9zcmMvdGVzdC50eHQKCmVjaG8gKyAiY2F0IC9kcm9uZS9zcmMvdGVzdC50eHQiCmNhdCAvZHJvbmUvc3JjL3Rlc3QudHh0Cgo="
+    },
+    {
+      "metadata": {
+        "uid": "0ug3uh36jtexupiqeb75igtu5w8l5no9",
+        "namespace": "vypmf4odm3onnkedbjavobwv4zuxhywi",
+        "name": "step-2"
+      },
+      "data": "CmlmIFsgLW4gIiRDSV9ORVRSQ19NQUNISU5FIiBdOyB0aGVuCmNhdCA8PEVPRiA+ICRIT01FLy5uZXRyYwptYWNoaW5lICRDSV9ORVRSQ19NQUNISU5FCmxvZ2luICRDSV9ORVRSQ19VU0VSTkFNRQpwYXNzd29yZCAkQ0lfTkVUUkNfUEFTU1dPUkQKRU9GCmNobW9kIDA2MDAgJEhPTUUvLm5ldHJjCmZpCnVuc2V0IENJX05FVFJDX1VTRVJOQU1FCnVuc2V0IENJX05FVFJDX1BBU1NXT1JECnVuc2V0IERST05FX05FVFJDX1VTRVJOQU1FCnVuc2V0IERST05FX05FVFJDX1BBU1NXT1JECnNldCAtZQoKZWNobyArICJzbGVlcCAzIgpzbGVlcCAzCgplY2hvICsgImNhdCAvZHJvbmUvc3JjL3Rlc3QudHh0IgpjYXQgL2Ryb25lL3NyYy90ZXN0LnR4dAoK"
+    }
+  ],
+  "docker": {
+    "volumes": [
+      {
+        "metadata": {
+          "uid": "i4bt0dj0swyryie7kgidhfrlgtrqm183",
+          "namespace": "vypmf4odm3onnkedbjavobwv4zuxhywi",
+          "name": "workspace"
+        },
+        "temp": {}
+      }
+    ]
+  }
+}
